@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>dday.js test</title>
+</head>
+<body>
+<h1>daysUntil() tests</h1>
+<ul id="results"></ul>
+<script src="../js/dday.js"></script>
+<script>
+  function assertEqual(actual, expected, label) {
+    var pass = actual === expected;
+    var li = document.createElement('li');
+    li.textContent = (pass ? 'PASS' : 'FAIL') + ' — ' + label + ' (expected ' + expected + ', got ' + actual + ')';
+    li.style.color = pass ? 'green' : 'red';
+    document.getElementById('results').appendChild(li);
+    console.assert(pass, label, 'expected', expected, 'got', actual);
+    return pass;
+  }
+
+  var allPass = true;
+  allPass = assertEqual(daysUntil('2026-12-13', new Date(2026, 7, 15)), 120, '2026-08-15 -> 2026-12-13 is 120 days') && allPass;
+  allPass = assertEqual(daysUntil('2026-12-13', new Date(2026, 11, 13)), 0, 'same day is 0') && allPass;
+  allPass = assertEqual(daysUntil('2026-12-13', new Date(2026, 11, 14)), -1, 'day after is -1') && allPass;
+
+  var summary = document.createElement('h2');
+  summary.id = 'summary';
+  summary.textContent = allPass ? 'ALL PASS' : 'SOME FAILED';
+  summary.style.color = allPass ? 'green' : 'red';
+  document.body.appendChild(summary);
+</script>
+</body>
+</html>
