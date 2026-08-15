@@ -233,6 +233,7 @@ button{
   border-radius:8px;
   object-fit:contain;
   display:block;
+  touch-action:manipulation;
 }
 .lightbox-close{
   position:absolute;
