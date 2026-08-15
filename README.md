@@ -15,4 +15,4 @@
 
 ## 배포
 
-GitHub Pages 사용: Settings → Pages → Branch: `main` / root.
+GitHub Pages 사용: Settings → Pages → Branch: `master` / root.

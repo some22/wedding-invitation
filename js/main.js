@@ -18,6 +18,7 @@
   function renderDday() {
     var el = document.getElementById('dday-count');
     if (!el) return;
+    if (typeof window.daysUntil !== 'function') return;
     var days = window.daysUntil('2026-12-13', new Date());
     if (days > 0) {
       el.textContent = 'D-' + days;
