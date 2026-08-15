@@ -198,20 +198,15 @@ button{
   aspect-ratio:1/1;
   border:none;
   border-radius:6px;
-  color:rgba(237,233,221,0.85);
-  font-family:var(--font-display);
-  font-size:15px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  padding:0;
+  overflow:hidden;
+  background:linear-gradient(135deg,#1B3325,#0F1D14);
 }
-.tile-a{ background:linear-gradient(135deg,#1B3325,#0F1D14); }
-.tile-b{ background:linear-gradient(135deg,#2A3B2C,#132318); }
-.tile-c{ background:linear-gradient(135deg,#3A2E20,#1B160F); }
-.gallery-note{
-  font-size:11.5px;
-  color:var(--color-muted);
-  margin:16px 0 0;
+.gallery-item img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 .lightbox{
   position:fixed; inset:0;
