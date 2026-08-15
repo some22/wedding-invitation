@@ -31,7 +31,6 @@
 
   function initLightbox() {
     var galleryItems = document.querySelectorAll('.gallery-item');
-    var videoCards = document.querySelectorAll('.video-card');
     var lightbox = document.getElementById('lightbox');
     var content = document.getElementById('lightbox-content');
     var closeBtn = document.getElementById('lightbox-close');
@@ -61,18 +60,6 @@
         img.src = 'images/' + index + '.jpg';
         img.alt = label;
         open(img);
-      });
-    });
-
-    videoCards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        var src = card.getAttribute('data-src');
-        var video = document.createElement('video');
-        video.src = src;
-        video.controls = true;
-        video.autoplay = true;
-        video.playsInline = true;
-        open(video);
       });
     });
 

@@ -74,14 +74,14 @@
 <section id="video" class="section video">
   <p class="eyebrow">영상으로 보기</p>
   <div class="video-grid">
-    <button class="video-card" data-src="videos/1.mp4" data-label="웨딩필름">
-      <span class="play-icon">▶</span>
-      <span class="video-card-label">웨딩필름</span>
-    </button>
-    <button class="video-card" data-src="videos/2.mp4" data-label="비하인드">
-      <span class="play-icon">▶</span>
-      <span class="video-card-label">비하인드</span>
-    </button>
+    <div class="video-item">
+      <video class="video-player" src="videos/1.mp4" poster="videos/thumbnail_1.jpg" controls preload="metadata" playsinline></video>
+      <p class="video-item-label">웨딩필름</p>
+    </div>
+    <div class="video-item">
+      <video class="video-player" src="videos/2.mp4" poster="videos/thumbnail_2.jpg" controls preload="metadata" playsinline></video>
+      <p class="video-item-label">비하인드</p>
+    </div>
   </div>
 </section>
 <section id="location" class="section location">
