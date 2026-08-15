@@ -114,3 +114,22 @@ button{
 @media (prefers-reduced-motion: reduce){
   .scroll-cue span{ animation:none; opacity:0.7; }
 }
+.invitation{
+  text-align:center;
+}
+.invitation-text{
+  font-size:15px;
+  line-height:2;
+  color:var(--color-ink);
+  margin:0;
+}
+.invitation-parents{
+  font-size:13.5px;
+  line-height:1.9;
+  color:var(--color-muted);
+  margin:0;
+}
+.invitation-parents b{
+  color:var(--color-ink-bright);
+  font-weight:600;
+}
