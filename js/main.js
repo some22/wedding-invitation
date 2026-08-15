@@ -109,11 +109,23 @@
     });
   }
 
+  function initAccordion() {
+    var items = document.querySelectorAll('.info-item');
+    items.forEach(function (item) {
+      var question = item.querySelector('.info-question');
+      if (!question) return;
+      question.addEventListener('click', function () {
+        item.classList.toggle('is-open');
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSnow();
     renderDday();
     initLightbox();
     initVideoCards();
     initCopyButtons();
+    initAccordion();
   });
 })();
