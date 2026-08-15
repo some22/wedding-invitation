@@ -37,3 +37,80 @@ button{
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
 }
+.cover{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:0;
+}
+.snow{
+  position:absolute; inset:0;
+  overflow:hidden;
+  pointer-events:none;
+}
+.flake{
+  position:absolute;
+  top:-8%;
+  width:3px;height:3px;
+  border-radius:50%;
+  background:rgba(237,233,221,0.7);
+  animation:fall 11s linear infinite;
+}
+@keyframes fall{
+  to{ transform:translateY(112vh); }
+}
+@media (prefers-reduced-motion: reduce){
+  .flake{ animation:none; opacity:0.5; }
+}
+.cover-inner{
+  position:relative;
+  text-align:center;
+  padding:0 32px;
+}
+.cover-names{
+  font-family:var(--font-display);
+  font-weight:700;
+  font-size:clamp(30px,8vw,42px);
+  color:var(--color-ink-bright);
+  margin:0;
+  letter-spacing:0.02em;
+}
+.cover-amp{
+  display:inline-block;
+  margin:0 14px;
+  color:var(--color-accent);
+  font-weight:400;
+}
+.cover-date{
+  font-size:15px;
+  color:var(--color-ink);
+  margin:0 0 4px;
+  letter-spacing:0.02em;
+}
+.cover-venue{
+  font-size:13px;
+  color:var(--color-muted);
+  margin:0;
+}
+.scroll-cue{
+  position:absolute;
+  bottom:32px;
+  left:50%;
+  transform:translateX(-50%);
+}
+.scroll-cue span{
+  display:block;
+  width:1px;height:36px;
+  background:linear-gradient(180deg,var(--color-accent),transparent);
+  animation:scroll-cue 2.2s ease-in-out infinite;
+}
+@keyframes scroll-cue{
+  0%,100%{ transform:scaleY(0.6); opacity:0.4; }
+  50%{ transform:scaleY(1); opacity:1; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-cue span{ animation:none; opacity:0.7; }
+}
