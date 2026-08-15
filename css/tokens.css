@@ -1,6 +1,7 @@
 :root{
   --color-bg-top:#132318;
   --color-bg-bottom:#0B1710;
+  --color-bg-bottom-rgb:11, 23, 16;
   --color-ink:#EDE9DD;
   --color-ink-bright:#FFFFFF;
   --color-muted:#B7C7B9;
