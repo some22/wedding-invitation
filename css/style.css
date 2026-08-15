@@ -429,3 +429,29 @@ button{
   margin:0;
   font-variant-numeric:tabular-nums;
 }
+.footer{
+  text-align:center;
+  padding-bottom:64px;
+}
+.footer-thanks{
+  font-family:var(--font-display);
+  font-size:16px;
+  line-height:1.8;
+  color:var(--color-ink-bright);
+  margin:0 0 28px;
+}
+.share-btn{
+  background:var(--color-accent);
+  color:var(--color-bg-bottom);
+  border:none;
+  font-size:13px;
+  font-weight:600;
+  padding:12px 28px;
+  border-radius:999px;
+}
+.footer-copyright{
+  margin-top:40px;
+  font-size:11px;
+  letter-spacing:0.1em;
+  color:var(--color-muted);
+}
