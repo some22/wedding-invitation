@@ -120,6 +120,17 @@
     });
   }
 
+  function initAccountToggle() {
+    var btn = document.getElementById('account-toggle-btn');
+    var list = document.getElementById('account-list');
+    if (!btn || !list) return;
+    btn.addEventListener('click', function () {
+      var isHidden = list.hidden;
+      list.hidden = !isHidden;
+      btn.textContent = isHidden ? '계좌번호 닫기' : '계좌번호 보기';
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSnow();
     renderDday();
@@ -127,5 +138,6 @@
     initVideoCards();
     initCopyButtons();
     initAccordion();
+    initAccountToggle();
   });
 })();
