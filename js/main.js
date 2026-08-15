@@ -30,41 +30,53 @@
   }
 
   function initLightbox() {
-    var items = document.querySelectorAll('.gallery-item');
+    var galleryItems = document.querySelectorAll('.gallery-item');
+    var videoCards = document.querySelectorAll('.video-card');
     var lightbox = document.getElementById('lightbox');
     var content = document.getElementById('lightbox-content');
     var closeBtn = document.getElementById('lightbox-close');
     if (!lightbox || !content || !closeBtn) return;
 
-    items.forEach(function (item) {
-      item.addEventListener('click', function () {
-        content.textContent = item.getAttribute('data-label');
-        content.className = 'lightbox-content ' + item.className.replace('gallery-item', '').trim();
-        lightbox.hidden = false;
-      });
-    });
+    function open(mediaEl) {
+      content.innerHTML = '';
+      content.appendChild(mediaEl);
+      lightbox.hidden = false;
+    }
 
     function close() {
       lightbox.hidden = true;
+      content.innerHTML = '';
     }
+
+    galleryItems.forEach(function (item) {
+      item.addEventListener('click', function () {
+        var index = item.getAttribute('data-index');
+        var label = item.getAttribute('data-label') || '';
+        var img = document.createElement('img');
+        img.src = 'images/' + index + '.jpg';
+        img.alt = label;
+        open(img);
+      });
+    });
+
+    videoCards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        var src = card.getAttribute('data-src');
+        var video = document.createElement('video');
+        video.src = src;
+        video.controls = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        open(video);
+      });
+    });
+
     closeBtn.addEventListener('click', close);
     lightbox.addEventListener('click', function (e) {
       if (e.target === lightbox) close();
     });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') close();
-    });
-  }
-
-  function initVideoCards() {
-    var cards = document.querySelectorAll('.video-card');
-    var note = document.getElementById('video-note');
-    if (!note) return;
-    cards.forEach(function (card) {
-      card.addEventListener('click', function () {
-        note.textContent = '"' + card.getAttribute('data-label') + '" 샘플 영상입니다. 실제 영상 파일로 교체될 예정입니다.';
-        note.hidden = false;
-      });
     });
   }
 
@@ -136,7 +148,6 @@
     initSnow();
     renderDday();
     initLightbox();
-    initVideoCards();
     initCopyButtons();
     initAccordion();
     initAccountToggle();

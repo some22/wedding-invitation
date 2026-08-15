@@ -219,14 +219,18 @@ button{
 .lightbox[hidden]{ display:none; }
 .lightbox-content{
   width:min(86vw,420px);
-  aspect-ratio:1/1;
-  border-radius:8px;
+  max-height:86vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-family:var(--font-display);
-  font-size:20px;
-  color:var(--color-ink-bright);
+}
+.lightbox-content img,
+.lightbox-content video{
+  width:100%;
+  max-height:86vh;
+  border-radius:8px;
+  object-fit:contain;
+  display:block;
 }
 .lightbox-close{
   position:absolute;
