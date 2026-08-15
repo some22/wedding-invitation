@@ -67,10 +67,53 @@
     });
   }
 
+  function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      return navigator.clipboard.writeText(text).catch(function () {
+        return legacyCopy(text);
+      });
+    }
+    return Promise.resolve(legacyCopy(text));
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.focus();
+    ta.select();
+    var ok = false;
+    try {
+      ok = document.execCommand('copy');
+    } catch (e) {
+      ok = false;
+    }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function initCopyButtons() {
+    var buttons = document.querySelectorAll('.copy-btn');
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var text = btn.getAttribute('data-copy');
+        copyToClipboard(text);
+        var feedback = btn.parentElement.querySelector('[data-copy-feedback]');
+        if (feedback) {
+          feedback.hidden = false;
+          setTimeout(function () { feedback.hidden = true; }, 1800);
+        }
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSnow();
     renderDday();
     initLightbox();
     initVideoCards();
+    initCopyButtons();
   });
 })();
