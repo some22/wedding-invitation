@@ -1,0 +1,10 @@
+:root{
+  --color-bg-top:#132318;
+  --color-bg-bottom:#0B1710;
+  --color-ink:#EDE9DD;
+  --color-ink-bright:#FFFFFF;
+  --color-muted:#B7C7B9;
+  --color-accent:#C79A6B;
+  --font-display:'Nanum Myeongjo','Noto Serif KR',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'Apple SD Gothic Neo','Malgun Gothic',sans-serif;
+}
