@@ -259,7 +259,7 @@ button{
 }
 .video-player{
   width:100%;
-  aspect-ratio:16/9;
+  max-height:70vh;
   border-radius:8px;
   background:#000;
   display:block;
