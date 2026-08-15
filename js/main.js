@@ -28,8 +28,36 @@
     }
   }
 
+  function initLightbox() {
+    var items = document.querySelectorAll('.gallery-item');
+    var lightbox = document.getElementById('lightbox');
+    var content = document.getElementById('lightbox-content');
+    var closeBtn = document.getElementById('lightbox-close');
+    if (!lightbox || !content || !closeBtn) return;
+
+    items.forEach(function (item) {
+      item.addEventListener('click', function () {
+        content.textContent = item.getAttribute('data-label');
+        content.className = 'lightbox-content ' + item.className.replace('gallery-item', '').trim();
+        lightbox.hidden = false;
+      });
+    });
+
+    function close() {
+      lightbox.hidden = true;
+    }
+    closeBtn.addEventListener('click', close);
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) close();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') close();
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSnow();
     renderDday();
+    initLightbox();
   });
 })();
