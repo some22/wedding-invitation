@@ -45,6 +45,12 @@ button{
   justify-content:center;
   overflow:hidden;
   padding:0;
+  background-image:
+    linear-gradient(180deg, rgba(11,23,16,0.55) 0%, rgba(11,23,16,0.30) 45%, rgba(11,23,16,0.75) 100%),
+    url('../images/0_main.jpg');
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
 }
 .snow{
   position:absolute; inset:0;
