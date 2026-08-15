@@ -55,9 +55,22 @@
     });
   }
 
+  function initVideoCards() {
+    var cards = document.querySelectorAll('.video-card');
+    var note = document.getElementById('video-note');
+    if (!note) return;
+    cards.forEach(function (card) {
+      card.addEventListener('click', function () {
+        note.textContent = '"' + card.getAttribute('data-label') + '" 샘플 영상입니다. 실제 영상 파일로 교체될 예정입니다.';
+        note.hidden = false;
+      });
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initSnow();
     renderDday();
     initLightbox();
+    initVideoCards();
   });
 })();
