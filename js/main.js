@@ -34,22 +34,17 @@
     var lightbox = document.getElementById('lightbox');
     var content = document.getElementById('lightbox-content');
     var closeBtn = document.getElementById('lightbox-close');
-    var viewportMeta = document.querySelector('meta[name="viewport"]');
-    var VIEWPORT_DEFAULT = 'width=device-width, initial-scale=1.0';
-    var VIEWPORT_LOCKED = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no';
     if (!lightbox || !content || !closeBtn) return;
 
     function open(mediaEl) {
       content.innerHTML = '';
       content.appendChild(mediaEl);
       lightbox.hidden = false;
-      if (viewportMeta) viewportMeta.setAttribute('content', VIEWPORT_LOCKED);
     }
 
     function close() {
       lightbox.hidden = true;
       content.innerHTML = '';
-      if (viewportMeta) viewportMeta.setAttribute('content', VIEWPORT_DEFAULT);
     }
 
     galleryItems.forEach(function (item) {
