@@ -106,10 +106,14 @@ window.wrapGalleryIndex = wrapGalleryIndex;
     if (nextBtn) nextBtn.addEventListener('click', function () { navigate(1); });
 
     content.addEventListener('touchstart', function (e) {
-      if (currentIndex === null || e.touches.length !== 1) return;
+      if (currentIndex === null || e.touches.length !== 1) { touchActive = false; return; }
       touchStartX = e.touches[0].clientX;
       touchStartY = e.touches[0].clientY;
       touchActive = true;
+    });
+
+    content.addEventListener('touchcancel', function () {
+      touchActive = false;
     });
 
     content.addEventListener('touchend', function (e) {
