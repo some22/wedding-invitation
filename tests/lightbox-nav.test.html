@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>lightbox nav test</title>
+</head>
+<body>
+<h1>wrapGalleryIndex() tests</h1>
+<ul id="results"></ul>
+<script src="../js/main.js"></script>
+<script>
+  function assertEqual(actual, expected, label) {
+    var pass = actual === expected;
+    var li = document.createElement('li');
+    li.textContent = (pass ? 'PASS' : 'FAIL') + ' — ' + label + ' (expected ' + expected + ', got ' + actual + ')';
+    li.style.color = pass ? 'green' : 'red';
+    document.getElementById('results').appendChild(li);
+    console.assert(pass, label, 'expected', expected, 'got', actual);
+    return pass;
+  }
+
+  var allPass = true;
+  allPass = assertEqual(wrapGalleryIndex(15, 1, 15), 1, '15 + next wraps to 1') && allPass;
+  allPass = assertEqual(wrapGalleryIndex(1, -1, 15), 15, '1 + prev wraps to 15') && allPass;
+  allPass = assertEqual(wrapGalleryIndex(5, 1, 15), 6, '5 + next is 6') && allPass;
+  allPass = assertEqual(wrapGalleryIndex(5, -1, 15), 4, '5 + prev is 4') && allPass;
+  allPass = assertEqual(wrapGalleryIndex(1, 1, 1), 1, 'single-item gallery wraps to itself') && allPass;
+
+  var summary = document.createElement('h2');
+  summary.id = 'summary';
+  summary.textContent = allPass ? 'ALL PASS' : 'SOME FAILED';
+  summary.style.color = allPass ? 'green' : 'red';
+  document.body.appendChild(summary);
+</script>
+</body>
+</html>

@@ -1,3 +1,8 @@
+function wrapGalleryIndex(current, delta, total) {
+  return ((current - 1 + delta) % total + total) % total + 1;
+}
+window.wrapGalleryIndex = wrapGalleryIndex;
+
 (function () {
   function initSnow() {
     var hosts = document.querySelectorAll('.snow');
