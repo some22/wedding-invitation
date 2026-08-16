@@ -39,27 +39,55 @@ window.wrapGalleryIndex = wrapGalleryIndex;
     var lightbox = document.getElementById('lightbox');
     var content = document.getElementById('lightbox-content');
     var closeBtn = document.getElementById('lightbox-close');
+    var prevBtn = document.getElementById('lightbox-prev');
+    var nextBtn = document.getElementById('lightbox-next');
     if (!lightbox || !content || !closeBtn) return;
 
-    function open(mediaEl) {
+    var currentIndex = null;
+    var touchStartX = 0;
+    var touchStartY = 0;
+    var touchActive = false;
+
+    function updateNavButtons() {
+      var show = currentIndex !== null;
+      if (prevBtn) prevBtn.hidden = !show;
+      if (nextBtn) nextBtn.hidden = !show;
+    }
+
+    function openMedia(mediaEl, index) {
       content.innerHTML = '';
       content.appendChild(mediaEl);
       lightbox.hidden = false;
+      currentIndex = (typeof index === 'number') ? index : null;
+      updateNavButtons();
     }
 
     function close() {
       lightbox.hidden = true;
       content.innerHTML = '';
+      currentIndex = null;
+      updateNavButtons();
+    }
+
+    function showAt(index) {
+      var item = galleryItems[index - 1];
+      var label = item ? (item.getAttribute('data-label') || '') : '';
+      var img = document.createElement('img');
+      img.src = 'images/' + index + '.jpg';
+      img.alt = label;
+      openMedia(img, index);
+    }
+
+    function navigate(delta) {
+      if (currentIndex === null || galleryItems.length === 0) return;
+      var next = window.wrapGalleryIndex(currentIndex, delta, galleryItems.length);
+      showAt(next);
     }
 
     galleryItems.forEach(function (item) {
       item.addEventListener('click', function () {
-        var index = item.getAttribute('data-index');
-        var label = item.getAttribute('data-label') || '';
-        var img = document.createElement('img');
-        img.src = 'images/' + index + '.jpg';
-        img.alt = label;
-        open(img);
+        var index = parseInt(item.getAttribute('data-index'), 10);
+        showAt(index);
       });
     });
 
@@ -68,7 +96,30 @@ window.wrapGalleryIndex = wrapGalleryIndex;
       if (e.target === lightbox) close();
     });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape') close();
+      if (lightbox.hidden) return;
+      if (e.key === 'Escape') { close(); return; }
+      if (e.key === 'ArrowLeft') { navigate(-1); return; }
+      if (e.key === 'ArrowRight') { navigate(1); return; }
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', function () { navigate(-1); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { navigate(1); });
+
+    content.addEventListener('touchstart', function (e) {
+      if (currentIndex === null || e.touches.length !== 1) return;
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchActive = true;
+    });
+
+    content.addEventListener('touchend', function (e) {
+      if (!touchActive) return;
+      touchActive = false;
+      var touch = e.changedTouches[0];
+      var dx = touch.clientX - touchStartX;
+      var dy = touch.clientY - touchStartY;
+      if (Math.abs(dx) < 50 || Math.abs(dx) <= Math.abs(dy)) return;
+      navigate(dx < 0 ? 1 : -1);
     });
 
     var mapImg = document.querySelector('.map-illustration-img');
@@ -77,7 +128,7 @@ window.wrapGalleryIndex = wrapGalleryIndex;
         var img = document.createElement('img');
         img.src = mapImg.getAttribute('src');
         img.alt = mapImg.getAttribute('alt') || '';
-        open(img);
+        openMedia(img, null);
       });
     }
   }
