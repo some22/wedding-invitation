@@ -63,7 +63,7 @@ button{
 .flake{
   position:absolute;
   top:-8%;
-  width:5px;height:5px;
+  width:4px;height:4px;
   border-radius:50%;
   background:rgba(237,233,221,0.7);
   animation:fall 11s linear infinite;
