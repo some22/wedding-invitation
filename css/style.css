@@ -261,31 +261,116 @@ button{
   display:block;
 }
 .location{ text-align:center; }
-.map-placeholder{
-  aspect-ratio:16/10;
+.map-card{
+  aspect-ratio:500/360;
   border-radius:8px;
   background:
     linear-gradient(135deg,rgba(199,154,107,0.12),transparent),
     linear-gradient(180deg,#152A1C,#0E1B12);
   border:1px solid rgba(199,154,107,0.2);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:6px;
-  color:var(--color-muted);
-  font-size:13px;
   margin-bottom:20px;
+  overflow:hidden;
 }
-.map-placeholder-sub{
-  font-size:11px;
-  color:rgba(183,199,185,0.6);
+.map-illustration{
+  width:100%;
+  height:100%;
+  display:block;
+}
+.map-road{
+  stroke:rgba(183,199,185,0.35);
+  stroke-width:2.5;
+  stroke-linecap:round;
+}
+.map-arrow-line{
+  stroke:rgba(183,199,185,0.45);
+  stroke-width:1.5;
+}
+.map-shuttle-connector{
+  stroke:var(--color-accent);
+}
+.map-arrow-head{
+  fill:rgba(183,199,185,0.45);
+}
+.map-subway-ring{
+  fill:rgba(11,23,16,0.7);
+  stroke:var(--color-accent);
+  stroke-width:1.5;
+}
+.map-subway-num{
+  font-size:6.5px;
+  font-weight:700;
+  fill:var(--color-accent);
+  text-anchor:middle;
+  dominant-baseline:central;
+}
+.map-subway-num--sm{
+  font-size:5px;
+}
+.map-bus-body{
+  fill:var(--color-accent);
+}
+.map-bus-wheel{
+  fill:var(--color-bg-bottom);
+}
+.map-pin-body{
+  fill:var(--color-accent);
+}
+.map-pin-dot{
+  fill:var(--color-bg-bottom);
+}
+.map-landmark{
+  fill:var(--color-muted);
+}
+.map-label{
+  font-size:9px;
+  fill:var(--color-muted);
+  text-anchor:middle;
+}
+.map-label--venue{
+  fill:var(--color-ink-bright);
+  font-weight:700;
+}
+.map-label--corner{
+  font-size:7.5px;
+  fill:var(--color-muted);
+}
+.map-label--corner-side{
+  dominant-baseline:middle;
+}
+.map-label--anchor-start{
+  text-anchor:start;
+}
+.map-label--anchor-end{
+  text-anchor:end;
+}
+.map-label--road{
+  font-size:8px;
+  fill:rgba(183,199,185,0.6);
+  letter-spacing:0.03em;
+}
+.map-label--road-sm{
+  font-size:7px;
+  fill:rgba(183,199,185,0.55);
+}
+.map-label--shuttle{
+  font-size:7.5px;
+  fill:var(--color-accent);
+  font-weight:600;
+}
+.map-label--landmark{
+  font-size:6.5px;
+  fill:var(--color-muted);
 }
 .address{
   font-family:var(--font-display);
   font-size:17px;
   color:var(--color-ink-bright);
-  margin:0 0 12px;
+  margin:0 0 4px;
+}
+.address-sub{
+  font-size:12.5px;
+  color:var(--color-muted);
+  margin:0 0 16px;
 }
 .copy-btn{
   border:1px solid var(--color-accent);
@@ -300,24 +385,40 @@ button{
   color:var(--color-accent);
   margin:10px 0 0;
 }
+.map-app-links{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:20px;
+}
+.map-app-btn{
+  border:1px solid rgba(199,154,107,0.4);
+  background:transparent;
+  color:var(--color-accent);
+  font-size:12px;
+  padding:8px 16px;
+  border-radius:999px;
+  text-decoration:none;
+}
 .transit-info{
   margin-top:28px;
   text-align:left;
   display:flex;
   flex-direction:column;
-  gap:14px;
+  gap:16px;
 }
 .info-row{
   display:flex;
-  gap:16px;
+  flex-direction:column;
+  gap:4px;
   font-size:13px;
-  line-height:1.6;
+  line-height:1.7;
 }
 .info-label{
-  flex-shrink:0;
-  width:44px;
   color:var(--color-accent);
   font-weight:600;
+  font-size:12.5px;
 }
 .info-list{
   display:flex;
