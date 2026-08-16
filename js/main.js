@@ -65,6 +65,16 @@
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') close();
     });
+
+    var mapImg = document.querySelector('.map-illustration-img');
+    if (mapImg) {
+      mapImg.addEventListener('click', function () {
+        var img = document.createElement('img');
+        img.src = mapImg.getAttribute('src');
+        img.alt = mapImg.getAttribute('alt') || '';
+        open(img);
+      });
+    }
   }
 
   function copyToClipboard(text) {

@@ -272,6 +272,7 @@ button{
   border:1px solid rgba(199,154,107,0.2);
   margin-bottom:20px;
   overflow:hidden;
+  touch-action:manipulation;
 }
 .map-illustration{
   width:100%;
@@ -283,6 +284,8 @@ button{
   height:100%;
   display:block;
   object-fit:cover;
+  touch-action:manipulation;
+  cursor:pointer;
 }
 .map-road{
   stroke:rgba(183,199,185,0.35);
