@@ -264,7 +264,6 @@ button{
 }
 .location{ text-align:center; }
 .map-card{
-  aspect-ratio:500/360;
   border-radius:8px;
   background:
     linear-gradient(135deg,rgba(199,154,107,0.12),transparent),
@@ -281,9 +280,8 @@ button{
 }
 .map-illustration-img{
   width:100%;
-  height:100%;
+  height:auto;
   display:block;
-  object-fit:cover;
   touch-action:manipulation;
   cursor:pointer;
 }
