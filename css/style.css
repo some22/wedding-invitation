@@ -167,6 +167,27 @@ button{
   color:var(--color-muted);
   margin:0;
 }
+.cover-location-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin:22px 0 0;
+  padding:10px 22px;
+  border:1px solid rgba(240,226,166,0.45);
+  border-radius:999px;
+  background:rgba(0,0,0,0.15);
+  backdrop-filter:blur(2px);
+  -webkit-backdrop-filter:blur(2px);
+  color:#F0E2A6;
+  font-size:13px;
+  letter-spacing:0.04em;
+  text-decoration:none;
+}
+.cover-location-icon{
+  width:14px;
+  height:14px;
+  flex-shrink:0;
+}
 .scroll-cue{
   position:absolute;
   bottom:32px;
@@ -569,13 +590,57 @@ button{
   transition:max-height 0.25s ease;
 }
 .info-item.is-open .info-answer{
-  max-height:200px;
+  max-height:520px;
 }
 .info-answer p{
   margin:0 4px 16px;
   font-size:14.5px;
   line-height:1.8;
   color:var(--color-muted);
+}
+.parking-item.is-open .info-answer{
+  margin-top:10px;
+  padding:14px 14px 2px;
+  background:rgba(199,154,107,0.08);
+  border-radius:14px;
+}
+.parking-alt-list{
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  margin:0 0 14px;
+}
+.parking-alt-item{
+  text-align:left;
+}
+.parking-alt-name{
+  margin:0 0 8px;
+  font-size:14px;
+  color:var(--color-ink);
+}
+.parking-alt-item .map-app-links{
+  justify-content:flex-start;
+  margin-top:0;
+  gap:8px;
+}
+.parking-alt-item .map-app-btn{
+  font-size:12px;
+  padding:6px 12px;
+}
+.parking-item{
+  margin-top:2px;
+  background:transparent;
+}
+.parking-toggle{
+  padding:0 22px 0 0;
+  font-size:13px;
+  font-weight:600;
+  color:var(--color-accent);
+}
+.parking-toggle::after{
+  right:0;
+  top:1px;
+  font-size:14px;
 }
 .account{ text-align:center; }
 .account-lead{
