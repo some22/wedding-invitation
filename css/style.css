@@ -38,6 +38,9 @@ body{
 button{
   font-family:inherit;
   cursor:pointer;
+  appearance:none;
+  -webkit-appearance:none;
+  -webkit-tap-highlight-color:transparent;
 }
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto;}
