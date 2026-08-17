@@ -703,15 +703,6 @@ button{
   color:var(--color-ink-bright);
   margin:0 0 28px;
 }
-.share-btn{
-  background:var(--color-accent);
-  color:var(--color-bg-bottom);
-  border:none;
-  font-size:14.5px;
-  font-weight:600;
-  padding:12px 28px;
-  border-radius:999px;
-}
 .footer-copyright{
   margin-top:40px;
   font-size:11px;
