@@ -54,9 +54,10 @@ window.wrapGalleryIndex = wrapGalleryIndex;
       if (nextBtn) nextBtn.hidden = !show;
     }
 
-    function openMedia(mediaEl, index) {
+    function openMedia(mediaEl, index, isMap) {
       content.innerHTML = '';
       content.appendChild(mediaEl);
+      content.classList.toggle('lightbox-content--map', !!isMap);
       lightbox.hidden = false;
       currentIndex = (typeof index === 'number') ? index : null;
       updateNavButtons();
@@ -132,7 +133,7 @@ window.wrapGalleryIndex = wrapGalleryIndex;
         var img = document.createElement('img');
         img.src = mapImg.getAttribute('src');
         img.alt = mapImg.getAttribute('alt') || '';
-        openMedia(img, null);
+        openMedia(img, null, true);
       });
     }
   }
