@@ -32,6 +32,9 @@ body{
   margin:20px auto;
   border:none;
 }
+#cover .rule{
+  background:#F0E2A6;
+}
 button{
   font-family:inherit;
   cursor:pointer;
@@ -81,6 +84,61 @@ button{
   text-align:center;
   padding:0 32px;
 }
+.forever-begins{
+  position:relative;
+  margin:0 0 4px;
+  display:flex;
+  justify-content:center;
+}
+.forever-glow{
+  position:absolute;
+  inset:-24px -12px;
+  background:radial-gradient(ellipse 62% 68% at center, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.30) 45%, rgba(0,0,0,0) 75%);
+  filter:blur(7px);
+  opacity:0;
+  transition:opacity 1.5s ease-out 0.15s;
+  pointer-events:none;
+}
+.forever-glow.is-drawing{
+  opacity:1;
+}
+.forever-svg{
+  position:relative;
+  width:300px;
+  max-width:82vw;
+  height:auto;
+  overflow:visible;
+}
+.forever-text{
+  font-family:'Alex Brush', cursive;
+  font-size:62px;
+  fill:#F0E2A6;
+}
+.fb-letter{
+  fill-opacity:0;
+  transform-box:fill-box;
+  transform-origin:center;
+  transform:translateY(6px) scale(0.92);
+  transition-property: fill-opacity, transform;
+  transition-duration: 0.4s, 0.4s;
+  transition-timing-function: ease-out, ease-out;
+  transition-delay: 0s, 0s;
+}
+.fb-letter.is-drawing{
+  fill-opacity:1;
+  transform:translateY(0) scale(1);
+}
+@media (prefers-reduced-motion: reduce){
+  .fb-letter{
+    transition:none;
+    fill-opacity:1;
+    transform:translateY(0) scale(1);
+  }
+  .forever-glow{
+    transition:none;
+    opacity:1;
+  }
+}
 .cover-names{
   font-family:var(--font-display);
   font-weight:700;
@@ -92,7 +150,7 @@ button{
 .cover-amp{
   display:inline-block;
   margin:0 14px;
-  color:var(--color-accent);
+  color:#F0E2A6;
   font-weight:400;
 }
 .cover-date{
@@ -115,7 +173,7 @@ button{
 .scroll-cue span{
   display:block;
   width:1px;height:36px;
-  background:linear-gradient(180deg,var(--color-accent),transparent);
+  background:linear-gradient(180deg,#F0E2A6,transparent);
   animation:scroll-cue 2.2s ease-in-out infinite;
 }
 @keyframes scroll-cue{

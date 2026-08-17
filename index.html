@@ -6,7 +6,7 @@
 <meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
 <title>김현기 · 김다솜 결혼합니다</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=Alex+Brush&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/tokens.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,7 +15,12 @@
 <main>
 <section id="cover" class="cover">
   <div class="cover-inner">
-    <p class="eyebrow">Save the date</p>
+    <div class="forever-begins">
+      <div class="forever-glow" aria-hidden="true"></div>
+      <svg class="forever-svg" viewBox="0 0 380 110" role="img" aria-label="Forever Begins">
+        <text x="190" y="74" text-anchor="middle" class="forever-text">Forever Begins</text>
+      </svg>
+    </div>
     <h1 class="cover-names">김현기<span class="cover-amp">·</span>김다솜</h1>
     <div class="rule"></div>
     <p class="cover-date">2026. 12. 13. (일) 오후 6시</p>
@@ -94,7 +99,7 @@
   </div>
   <div class="transit-info">
     <div class="info-row"><span class="info-label">주차</span><span>금융캠퍼스 내 주차장 이용 가능</span></div>
-    <div class="info-row"><span class="info-label">셔틀버스</span><span>교대역 5번 출구 근처에서 15~20분 간격 순환 운행<br>오후 5시~6시 30분, 7시~9시</span></div>
+    <div class="info-row"><span class="info-label">셔틀버스</span><span>교대역 5번 출구 근처에서 15~20분 간격 순환 운행<br>운행 시간 : 오후 5시~6시 30분, 7시~9시</span></div>
   </div>
 </section>
 <section id="info" class="section info">
@@ -160,5 +165,63 @@
 </div>
 <script src="js/dday.js"></script>
 <script src="js/main.js"></script>
+<script>
+var foreverLetters = null;
+
+function buildForeverLetters(){
+  var el = document.querySelector('.forever-text');
+  if(!el) return [];
+  var text = el.textContent;
+  el.textContent = '';
+  var tspans = [];
+  for(var i=0;i<text.length;i++){
+    var ch = text[i];
+    if(ch === ' '){
+      el.appendChild(document.createTextNode(' '));
+    }else{
+      var tspan = document.createElementNS('http://www.w3.org/2000/svg','tspan');
+      tspan.textContent = ch;
+      tspan.setAttribute('class','fb-letter');
+      el.appendChild(tspan);
+      tspans.push(tspan);
+    }
+  }
+  return tspans;
+}
+
+function initForeverBegins(){
+  if(!foreverLetters){
+    foreverLetters = buildForeverLetters();
+  }
+  if(!foreverLetters.length) return;
+  var glowEl = document.querySelector('.forever-glow');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var step = 105;
+  foreverLetters.forEach(function(tspan, i){
+    tspan.classList.remove('is-drawing');
+    tspan.style.transitionDelay = (reduce ? 0 : i * step) + 'ms';
+  });
+  if(glowEl) glowEl.classList.remove('is-drawing');
+  void document.querySelector('.forever-svg').getBoundingClientRect();
+  function reveal(){
+    foreverLetters.forEach(function(tspan){
+      tspan.classList.add('is-drawing');
+    });
+    if(glowEl) glowEl.classList.add('is-drawing');
+  }
+  if(reduce){
+    reveal();
+    return;
+  }
+  requestAnimationFrame(function(){
+    requestAnimationFrame(reveal);
+  });
+}
+if(document.fonts && document.fonts.ready){
+  document.fonts.ready.then(initForeverBegins);
+}else{
+  window.addEventListener('load', initForeverBegins);
+}
+</script>
 </body>
 </html>
