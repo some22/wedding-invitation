@@ -665,6 +665,10 @@ button{
   gap:20px;
 }
 .account-list[hidden]{ display:none; }
+.account-group{
+  display:flex;
+  flex-direction:column;
+}
 .account-group-title{
   font-size:11px;
   letter-spacing:0.2em;
@@ -680,6 +684,9 @@ button{
   padding:14px 16px;
   border:1px solid rgba(199,154,107,0.2);
   border-radius:8px;
+}
+.account-row + .account-row{
+  margin-top:8px;
 }
 .account-name{
   font-size:15px;
